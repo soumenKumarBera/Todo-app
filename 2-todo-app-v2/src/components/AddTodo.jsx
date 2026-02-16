@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { IoMdAddCircle } from "react-icons/io";
 
 function AddTodo({ onClick }) {
-  const [todoName, setTodoName] = useState();
+  const [todoName, setTodoName] = useState("");
 
-  const [todoDate, setTodoDate] = useState();
+  const [todoDate, setTodoDate] = useState("");
 
   let handelOninpute = (event) => {
     // console.log(event.target.value);
@@ -41,7 +42,7 @@ function AddTodo({ onClick }) {
             class="btn btn-success kg-button"
             onClick={handelOnClick}
           >
-            Add
+            <IoMdAddCircle />
           </button>
         </div>
       </div>
