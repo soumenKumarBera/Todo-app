@@ -23,7 +23,7 @@ function App() {
     <center className="todo-container">
       <AppName />
       <AddTodo />
-      <TodoItems todoItem = {todoItems}></TodoItems>
+      <TodoItems todoItem={todoItems}></TodoItems>
     </center>
   );
 }

@@ -23,9 +23,9 @@ function AddTodo({ onClick }) {
   };
 
   return (
-    <div class="container text-center">
-      <div class="row kg-row">
-        <div class="col-6">
+    <div className="container text-center">
+      <div className="row kg-row">
+        <div className="col-6">
           <input
             type="text"
             value={todoName}
@@ -33,13 +33,13 @@ function AddTodo({ onClick }) {
             onChange={handelOninpute}
           />
         </div>
-        <div class="col-4">
+        <div className="col-4">
           <input type="date" value={todoDate} onChange={handelOnDate} />
         </div>
-        <div class="col-2 kg-btn">
+        <div className="col-2 kg-btn">
           <button
             type="button kg-btn"
-            class="btn btn-success kg-button"
+            className="btn btn-success kg-button"
             onClick={handelOnClick}
           >
             <IoMdAddCircle />
