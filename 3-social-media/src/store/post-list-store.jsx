@@ -15,21 +15,32 @@ const postListReducer = (currentValue, action) => {
         (post) => post.id !== action.payload.postId,
       );
     }
+  } else if (action.type === "ADD_POST") {
+    newPostList = [action.payload, ...currentValue];
   }
 
   return newPostList;
 };
 
 const PostListProvider = ({ children }) => {
-  const [postList, dispatchPostListg] = useReducer(
-    postListReducer,
-    Default_post_list,
-  );
+  const [postList, dispatchPostList] = useReducer(postListReducer, []);
 
-  const addPost = () => {};
+  const addPost = (userId, postTitle, postBody, reaction, tags) => {
+    dispatchPostList({
+      type: "ADD_POST",
+      payload: {
+        id: Date.now(),
+        userId: userId,
+        title: postTitle,
+        body: postBody,
+        reaction: reaction,
+        tags: tags,
+      },
+    });
+  };
 
   const deletePost = (postId) => {
-    dispatchPostListg({
+    dispatchPostList({
       type: "DELETE_POST",
       payload: {
         postId,
