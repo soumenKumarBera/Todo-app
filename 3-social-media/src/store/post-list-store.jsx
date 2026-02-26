@@ -6,19 +6,39 @@ export const PostList = createContext({
   deletePost: () => {},
 });
 
-const postListReducer = (currentValuee, action) => {};
+const postListReducer = (currentValue, action) => {
+  let newPostList = currentValue;
+
+  if (action.type === "DELETE_POST") {
+    {
+      newPostList = currentValue.filter(
+        (post) => post.id !== action.payload.postId,
+      );
+    }
+  }
+
+  return newPostList;
+};
 
 const PostListProvider = ({ children }) => {
-  const [postList, dispatchPostListg] = useReducer(postListReducer, 
+  const [postList, dispatchPostListg] = useReducer(
+    postListReducer,
     Default_post_list,
   );
 
   const addPost = () => {};
 
-  const dletePost = () => {};
+  const deletePost = (postId) => {
+    dispatchPostListg({
+      type: "DELETE_POST",
+      payload: {
+        postId,
+      },
+    });
+  };
 
   return (
-    <PostList.Provider value={{ postList, addPost, dletePost }}>
+    <PostList.Provider value={{ postList, addPost, deletePost }}>
       {children}
     </PostList.Provider>
   );
